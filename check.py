@@ -12,6 +12,9 @@ password = "YOUR_PASSWORD"
 # keywords to look for
 keywords = ["remote", "C2C", "W2"]
 
+# convert keywords to upper case for case insensitive search
+keywords = [keyword.upper() for keyword in keywords]
+
 # connect to the server
 mail = imaplib.IMAP4_SSL("imap-mail.outlook.com")
 
@@ -94,19 +97,21 @@ for num in id_list:
         else:
             date = date.decode('utf-8', errors='ignore')
 
-    # get the email body
     body = get_body(email_message)
-    if body is not None:
+    if body:
         body = body.decode('utf-8', errors='ignore')
         soup = BeautifulSoup(body, "html.parser")
         body = soup.get_text()
 
-    # check if keyword is in email subject or body
+    # convert both keyword and contents to upper case
+    subject = subject.upper()
+    if body:
+        body = body.upper()
+
     for keyword in keywords:
         if keyword in subject or (body and keyword in body):
             keyword_count[keyword].append((sender, subject, date))
 
-# print keyword count
 for keyword in keyword_count:
     print("Keyword: ", keyword)
     print("Count: ", len(keyword_count[keyword]))
