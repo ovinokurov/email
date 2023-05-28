@@ -6,8 +6,8 @@ from dateutil.relativedelta import relativedelta
 from bs4 import BeautifulSoup
 
 # your credentials
-username = "YOUR_USERNAME@hotmail.com"
-password = "YOUR_PASSWORD"
+username = "olegvinokurov@hotmail.com"
+password = "L0sAn6eles!"
 
 # keywords to look for
 keywords = ["remote", "C2C", "W2"]
@@ -121,3 +121,5 @@ for keyword in keyword_count:
         print("Subject: ", email_info[1])
         print("Date: ", email_info[2])
         print("-------------------------")
+
+input("Press enter")
