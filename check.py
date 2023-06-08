@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 # your credentials
 username = "olegvinokurov@hotmail.com"
-password = "L0sAn6eles!"
+password = ""
 
 # keywords to look for
 keywords = ["remote", "C2C", "W2"]
